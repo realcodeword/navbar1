@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <link rel="icon" href="favicon.png">
+
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(144, 199, 255);
+            height: 50px;
+            width: 100%;
+            border-radius: 50px;
+
+        }
+
+        .logo {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .navbar ul {
+            margin-right: 20px;
+            display: flex;
+            justify-content: scenter;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(0, 10, 45);
+        }
+
+        .navbar ul li a:hover {
+            color: rgb(0, 123, 91);
+        }
+
+        .menu {
+            display: none;
+        }
+
+        @media screen and (max-width:600px) {
+            .navbar ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                max-height: calc(100vh - 60px);
+                background: rgb(31, 31, 31);
+                position: fixed;
+                top: 60px;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .navbar ul li a {
+                color: white;
+                font-size: 25px;
+            }
+
+            .menu {
+                height: 40px;
+                width: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 20px;
+                cursor: pointer;
+            }
+
+            .menu-icon {
+                height: 7px;
+                width: 100%;
+                background-color: black;
+                position: relative;
+            }
+
+            .menu-icon::after {
+                position: absolute;
+                content: "";
+                top: -13px;
+                height: 7px;
+                width: 100%;
+                background-color: black;
+            }
+
+            .menu-icon::before {
+                position: absolute;
+                content: "";
+                bottom: -13px;
+                height: 7px;
+                width: 100%;
+                background-color: black;
+            }
+        }
+
+
+        @media screen and (max-width:300px) {
+            .navbar {
+                height: 30px;
+            }
+
+            .navbar ul {
+                top: 40px;
+                max-height: calc(100vh - 30px);
+            }
+
+            .logo h1 {
+                font-size: 13px;
+            }
+
+            .menu {
+                zoom: .6;
+            }
+
+            #navlink li a {
+                font-size: 16px;
+                ;
+            }
+        }
+
+        @media screen and (max-width:150px) {
+            .logo {
+                margin-left: 10px;
+            }
+
+            .logo h1 {
+                font-size: 8px;
+            }
+
+            .menu {
+                zoom: .4;
+            }
+        }
+
+        @media screen and (max-width:100px) {
+            .logo {
+                display: none;
+            }
+
+            .menu {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .menu-icon,
+            .menu-icon::after,
+            .menu-icon::before {
+                width: 50px;
+
+            }
+
+            #navlink li a {
+                font-size: 10px;
+                ;
+            }
+        }
+
+        @media screen and (max-height:180px) {
+            #navlink {
+                gap: 2px;
+            }
+
+            #navlink li a {
+                font-size: 14px;
+                ;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1> Rahul Ji Ara </h1>
+        </div>
+
+        <ul id="navlink">
+            <li>
+                <a href=""> Home </a>
+            </li>
+            <li>
+                <a href=""> About </a>
+            </li>
+            <li>
+                <a href=""> Contact </a>
+            </li>
+        </ul>
+
+        <div class="menu" onclick="navToggle()">
+            <div class="menu-icon"></div>
+        </div>
+    </nav>
+
+    <script>
+
+        let navlink = document.getElementById("navlink");
+        navlink.style.height = "0vh"
+        const navToggle = () => {
+            if (navlink.style.height == "0vh") {
+                navlink.style.height = "100%"
+                navlink.style.overflow = "auto"
+                navlink.style.transition = ".5s"
+            }
+            else {
+                navlink.style.height = "0vh"
+                navlink.style.transition = ".5s"
+            }
+        }
+    </script>
+</body>
+
+</html>
